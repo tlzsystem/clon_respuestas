@@ -8,6 +8,7 @@ class Respuesta(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_respuesta=models.DateField(auto_now_add=True)
     respuesta=models.CharField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.id)

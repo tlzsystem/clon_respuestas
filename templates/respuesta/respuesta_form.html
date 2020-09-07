@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container">
+
+
+
+
+    <div class="card">
+      <div class="card-header">
+        Pregunta id # {{publicacion.id}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ publicacion }}</h5>
+        <p class="card-text">{{ publicacion.comentario }}</p>
+      </div>
+
+          <div class="card-footer text-muted">
+            Publicado por {{ publicacion.usuario }} el {{ publicacion.fecha_publicacion }}
+          </div>
+    </div>
+
+    <br>
+
+    <form class="form-horizontal" role="form" method="post" action="">{% csrf_token %}
+          <div class="form-group">
+                <label for="{{ form.respuesta.id_for_label }}">Respuesta</label>
+               <textarea class="form-control" id="{{ form.respuesta.id_for_label }}" name="{{ form.respuesta.html_name}}"></textarea>
+            </div>
+          <input type="hidden" name="publicacion" id="id_publicacion" value="{{ publicacion.id}}">
+        <button type="submit" class="btn btn-primary">Responder</button>
+
+    </form>
+
+
+</div>
+
+
+{% endblock %}

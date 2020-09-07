@@ -6,6 +6,7 @@ class Publicacion(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     pregunta = models.CharField(max_length=200)
+    comentario = models.CharField(max_length=500)
     fecha_publicacion = models.DateField(auto_now_add=True)
 
     def __str__(self):

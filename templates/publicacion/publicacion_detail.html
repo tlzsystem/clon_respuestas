@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}Preguntas {% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="card">
+  <div class="card-header">
+    Pregunta id # {{object.id}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ object }}</h5>
+    <p class="card-text">{{ object.comentario }}</p>
+      <a href="{%url 'respuesta-create' object.id %}" class="btn btn-primary">Responder</a>
+  </div>
+
+      <div class="card-footer text-muted">
+        Publicado por {{ object.usuario }} el {{ object.fecha_publicacion }}
+  </div>
+</div>
+
+<div class="content">
+  <br>
+  <h4>{{ respuestas.count }} respuestas</h4>
+  <br>
+
+  {% for respuesta in respuestas%}
+
+  <div class="card">
+    <div class="card-header">
+      {{ respuesta.usuario }} el {{ respuesta.created }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{ respuesta.respuesta }}</p>
+    </div>
+</div>
+
+  {%endfor%}
+
+</div>
+
+
+
+
+
+
+{% endblock %}

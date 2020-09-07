@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}Preguntas {% endblock %}
+
+
+{% block content %}
+
+<h2 class="mt-4">Preguntas de la categoría: {{ categoria.nombre }} </h2>
+
+{%for pregunta in object_list %}
+
+
+<div class="card">
+  <div class="card-header">
+    Pregunta id # {{pregunta.id}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <a href="{% url 'publicaciones-detail' pregunta.id %}">{{ pregunta }}</a></h5>
+  </div>
+      <div class="card-footer text-muted">
+        Publicado por {{ pregunta.usuario }} el {{ pregunta.fecha_publicacion }}
+  </div>
+</div>
+
+
+
+{%endfor%}
+
+
+{% endblock %}
